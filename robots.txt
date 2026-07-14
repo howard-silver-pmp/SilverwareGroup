@@ -1,0 +1,37 @@
+# Silverware Resource Group crawler policy
+#
+# Normal search indexing is allowed. AI model training is not permitted.
+# The Content-Signal directive is an additional machine-readable policy signal;
+# crawlers that do not understand it should still process the standard Allow and
+# Disallow rules below.
+
+User-agent: *
+Content-Signal: search=yes, ai-train=no, use=reference
+Allow: /
+
+# Known crawlers used for AI model training or broad AI data collection.
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+Sitemap: https://silverwaregroup.com/sitemap.xml

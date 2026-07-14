@@ -1,0 +1,4 @@
+# Cloudflare Pages applies this policy header to all static responses.
+# Search indexing is allowed; AI model training is not permitted.
+/*
+  Content-Signal: search=yes, ai-train=no

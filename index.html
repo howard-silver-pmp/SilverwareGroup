@@ -1,19 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
 <title>Silverware Resource Group — Fractional Program, PMO &amp; Delivery Leadership</title>
 <meta name="description" content="Silverware Resource Group provides fractional program, PMO, and delivery leadership — helping organizations improve delivery visibility, governance, execution discipline, and program outcomes.">
-<link rel="canonical" href="https://www.silverwaregroup.com/">
+<link rel="canonical" href="https://silverwaregroup.com/">
 <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header class="site-header">
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="index.html">Silverware <span>Resource Group</span></a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="sr-only">Open navigation menu</span>
+      <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="./services/">Services</a></li>
       <li><a href="./contact/">Contact Us</a></li>
@@ -21,7 +28,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main-content">
 
   <section class="hero">
     <div class="wrap">
@@ -40,7 +47,11 @@
         </div>
 
         <div class="hero-art">
-          <img src="./images/Corporate_Team_Meeting.jpg" alt="Diverse team of business professionals collaborating around a table in a modern office">
+          <img src="./images/Corporate_Team_Meeting.jpg"
+               srcset="./images/Corporate_Team_Meeting-640.jpg 640w, ./images/Corporate_Team_Meeting-960.jpg 960w, ./images/Corporate_Team_Meeting.jpg 1456w"
+               sizes="(max-width: 900px) calc(100vw - 36px), (max-width: 1240px) 43vw, 520px"
+               width="1456" height="816" fetchpriority="high"
+               alt="Diverse team of business professionals collaborating around a table in a modern office">
         </div>
       </div>
     </div>
@@ -100,13 +111,17 @@
         <div>
           <p class="eyebrow">Engagement model</p>
           <h2>Senior leadership, on a fractional basis</h2>
-          <p style="color: rgba(255,255,255,0.85); font-size: 1.04rem; margin: 0 0 28px;">Bring in program and delivery leadership when and where it's needed — without the overhead of a full-time executive hire.</p>
+          <p class="cta-copy">Bring in program and delivery leadership when and where it's needed — without the overhead of a full-time executive hire.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="./contact/">Start a conversation</a>
             <a class="btn btn-ghost" href="./services/">Explore services</a>
           </div>
         </div>
-        <img src="./images/team_meeting_2.jpg" alt="Business team discussing strategy together in a collaborative meeting">
+        <img src="./images/team_meeting_2-960.jpg"
+             srcset="./images/team_meeting_2-640.jpg 640w, ./images/team_meeting_2-960.jpg 960w, ./images/team_meeting_2-1440.jpg 1440w"
+             sizes="(max-width: 900px) calc(100vw - 36px), (max-width: 1240px) 41vw, 480px"
+             width="1440" height="960" loading="lazy"
+             alt="Business team discussing strategy together in a collaborative meeting">
       </div>
     </div>
   </section>
@@ -120,5 +135,6 @@
   </div>
 </footer>
 
+<script src="./scripts/site.js" defer></script>
 </body>
 </html>

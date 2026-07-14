@@ -1,19 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
 <title>Services — Silverware Resource Group</title>
 <meta name="description" content="Fractional Program Leadership, PMO and Delivery Governance, Program Recovery and Stabilization, Agile/Hybrid Operating Model Improvement, and Executive Reporting and KPI Visibility.">
-<link rel="canonical" href="https://www.silverwaregroup.com/services/">
+<link rel="canonical" href="https://silverwaregroup.com/services/">
 <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header class="site-header">
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="../index.html">Silverware <span>Resource Group</span></a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="sr-only">Open navigation menu</span>
+      <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../services/" aria-current="page">Services</a></li>
       <li><a href="../contact/">Contact Us</a></li>
@@ -21,24 +28,28 @@
   </nav>
 </header>
 
-<main>
+<main id="main-content">
 
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <h1 style="max-width: 22ch;">Where we take direct responsibility for outcomes</h1>
+          <h1 class="hero-title-narrow">Where we take direct responsibility for outcomes</h1>
           <p class="lede">Five focused areas of engagement, each aimed at the same result: programs that leadership can see clearly and trust to deliver.</p>
         </div>
 
         <div class="hero-art">
-          <img src="../images/team_planning.jpg" alt="Diverse team of business professionals in a planning session">
+          <img src="../images/team_planning-960.jpg"
+               srcset="../images/team_planning-640.jpg 640w, ../images/team_planning-960.jpg 960w, ../images/team_planning-1440.jpg 1440w"
+               sizes="(max-width: 900px) calc(100vw - 36px), (max-width: 1240px) 43vw, 520px"
+               width="1440" height="960" fetchpriority="high"
+               alt="Diverse team of business professionals in a planning session">
         </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top: 8px;">
+  <section class="service-section">
     <div class="wrap">
       <div class="service-list">
 
@@ -133,5 +144,6 @@
   </div>
 </footer>
 
+<script src="../scripts/site.js" defer></script>
 </body>
 </html>
