@@ -45,7 +45,16 @@ body {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
-img, svg { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+svg {
+  max-width: 100%;
+  display: block;
+}
 
 button,
 input,
@@ -435,6 +444,7 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 
 .cta-grid img {
   width: 100%;
+  height: auto;
   border-radius: var(--radius);
   box-shadow: 0 20px 45px -18px rgba(0,0,0,0.4);
 }
@@ -553,8 +563,6 @@ button:focus-visible {
   .cta-grid { grid-template-columns: 1fr; }
   .cta-grid img {
     order: -1;
-    max-height: 420px;
-    object-fit: cover;
   }
 
   .contact-grid { grid-template-columns: 1fr; }
@@ -665,8 +673,7 @@ button:focus-visible {
   .nav { gap: 10px; }
   .brand { font-size: 1rem; }
 
-  .hero-art img,
-  .cta-grid img { max-height: 300px; }
+  .hero-art img { max-height: 300px; }
 
   .eyebrow {
     font-size: 0.74rem;
