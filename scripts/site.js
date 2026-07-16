@@ -1,6 +1,10 @@
 (() => {
   const mobileBreakpoint = 720;
 
+  document.querySelectorAll("[data-current-year]").forEach((yearElement) => {
+    yearElement.textContent = new Date().getFullYear();
+  });
+
   document.querySelectorAll('.nav').forEach((nav) => {
     const toggle = nav.querySelector('.nav-toggle');
     const menu = nav.querySelector('.nav-links');
