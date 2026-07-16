@@ -7,6 +7,7 @@
 <title>Contact Us — Silverware Resource Group</title>
 <meta name="description" content="Get in touch with Silverware Resource Group to discuss fractional program, PMO, and delivery leadership support.">
 <link rel="canonical" href="https://silverwaregroup.com/contact/">
+<link rel="preconnect" href="https://challenges.cloudflare.com">
 <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -63,27 +64,48 @@
           </dl>
         </div>
 
-        <form class="contact-form" action="mailto:support@silverwaregroup.com" method="post" enctype="text/plain">
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://forms.silverwaregroup.com/contact"
+          method="post"
+        >
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" name="Name" type="text" autocomplete="name" required>
+            <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
           </div>
           <div class="field">
             <label for="company">Company</label>
-            <input id="company" name="Company" type="text" autocomplete="organization">
+            <input id="company" name="company" type="text" autocomplete="organization" maxlength="150">
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="Email" type="email" inputmode="email" autocomplete="email" required>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required>
           </div>
           <div class="field">
             <label for="message">What's going on?</label>
-            <textarea id="message" name="Message" required placeholder="A short description of the program or challenge you'd like help with."></textarea>
+            <textarea id="message" name="message" maxlength="5000" required placeholder="A short description of the program or challenge you'd like help with."></textarea>
           </div>
+
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="website">Leave this field blank</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="turnstile-wrap" aria-label="Security verification">
+            <div id="contact-turnstile"></div>
+          </div>
+
+          <noscript>
+            <p class="form-status is-error">JavaScript must be enabled to submit this contact form.</p>
+          </noscript>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+
           <div class="btn-row">
-            <button class="btn btn-primary" type="submit">Send message</button>
+            <button class="btn btn-primary" id="contact-submit" type="submit" disabled>Send message</button>
           </div>
-          <p class="form-note">Submitting opens your email client with this message pre-filled and addressed to us.</p>
+          <p class="form-note">After you send the form, a confirmation will appear on this page. Your email application will not open.</p>
         </form>
 
       </div>
@@ -100,5 +122,7 @@
 </footer>
 
 <script src="../scripts/site.js" defer></script>
+<script src="../scripts/contact-form.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad" defer></script>
 </body>
 </html>

@@ -515,6 +515,41 @@ button:focus-visible {
 
 .form-note { font-size: 0.86rem; color: var(--ink-soft); margin-top: -4px; }
 
+.honeypot-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.turnstile-wrap {
+  width: 100%;
+  min-height: 65px;
+  overflow: hidden;
+}
+
+#contact-turnstile { max-width: 100%; }
+
+.form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  background: var(--paper-soft);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.form-status.is-success { border-left-color: var(--green); }
+.form-status.is-error { border-left-color: var(--amber); }
+
+.contact-form .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 /* ---------------------------------- Footer ---------------------------------- */
 
 .site-footer {
