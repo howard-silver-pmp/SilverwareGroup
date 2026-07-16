@@ -3,16 +3,27 @@
 
   const TURNSTILE_SITE_KEY = "0x4AAAAAAD2v1k3BeA1kVvaQ";
   const TURNSTILE_ACTION = "contact_form";
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const form = document.getElementById("contact-form");
   const submitButton = document.getElementById("contact-submit");
   const statusMessage = document.getElementById("form-status");
   const turnstileContainer = document.getElementById("contact-turnstile");
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("email-format-error");
 
   let turnstileWidgetId = null;
   let securityStatusVisible = false;
+  let emailValidationStarted = false;
 
-  if (!form || !submitButton || !statusMessage || !turnstileContainer) {
+  if (
+    !form ||
+    !submitButton ||
+    !statusMessage ||
+    !turnstileContainer ||
+    !emailInput ||
+    !emailError
+  ) {
     return;
   }
 
@@ -33,6 +44,64 @@
     submitButton.disabled = !isReady;
     submitButton.setAttribute("aria-disabled", String(!isReady));
   }
+
+  function getEmailValidationMessage() {
+    const value = emailInput.value.trim();
+
+    if (!value) {
+      return "Please enter your email address.";
+    }
+
+    if (!EMAIL_PATTERN.test(value)) {
+      return "Please enter a valid email address, such as name@example.com.";
+    }
+
+    return "";
+  }
+
+  function displayEmailValidation(message) {
+    emailInput.setCustomValidity(message);
+
+    if (message) {
+      emailInput.setAttribute("aria-invalid", "true");
+      emailError.textContent = message;
+      emailError.hidden = false;
+      return;
+    }
+
+    emailInput.removeAttribute("aria-invalid");
+    emailError.textContent = "";
+    emailError.hidden = true;
+  }
+
+  function validateEmail(showError = false) {
+    const message = getEmailValidationMessage();
+    emailInput.setCustomValidity(message);
+
+    if (showError || !message) {
+      displayEmailValidation(message);
+    }
+
+    return !message;
+  }
+
+  emailInput.addEventListener("blur", () => {
+    emailValidationStarted = true;
+    validateEmail(true);
+  });
+
+  emailInput.addEventListener("invalid", () => {
+    emailValidationStarted = true;
+    validateEmail(true);
+  });
+
+  emailInput.addEventListener("input", () => {
+    if (emailValidationStarted) {
+      validateEmail(true);
+    } else {
+      emailInput.setCustomValidity("");
+    }
+  });
 
   function resetTurnstile() {
     setSubmitReady(false);
@@ -80,7 +149,13 @@
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!form.reportValidity()) {
+    emailValidationStarted = true;
+    const emailIsValid = validateEmail(true);
+
+    if (!emailIsValid || !form.reportValidity()) {
+      if (!emailIsValid) {
+        emailInput.focus();
+      }
       return;
     }
 
@@ -111,7 +186,7 @@
     const payload = {
       name: form.elements.name.value,
       company: form.elements.company.value,
-      email: form.elements.email.value,
+      email: emailInput.value.trim(),
       message: form.elements.message.value,
       website: form.elements.website.value,
       turnstileToken,
@@ -142,6 +217,8 @@
       }
 
       form.reset();
+      emailValidationStarted = false;
+      displayEmailValidation("");
       setStatus(
         result.message ||
           "Thank you. Your message has been sent. We will respond as soon as possible.",

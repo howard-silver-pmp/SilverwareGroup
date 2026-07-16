@@ -78,9 +78,20 @@
             <label for="company">Company</label>
             <input id="company" name="company" type="text" autocomplete="organization" maxlength="150">
           </div>
-          <div class="field">
+          <div class="field" id="email-field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              maxlength="254"
+              aria-describedby="email-format-hint email-format-error"
+              required
+            >
+            <p id="email-format-hint" class="field-help">Enter an address such as name@example.com.</p>
+            <p id="email-format-error" class="field-error" aria-live="polite" hidden></p>
           </div>
           <div class="field">
             <label for="message">What's going on?</label>
