@@ -1,23 +1,35 @@
 /* ==========================================================================
    Silverware Resource Group — shared stylesheet
-   Palette: blue #2563EB / green #10B981 / amber #F59E0B / purple #8B5CF6 /
-            teal #0891B2 / ink #1F2937 on white
+   Approved brand palette:
+   SRG Navy #032B60 / SRG Teal #04839D / SRG Silver #9A9DA2 / White #FFFFFF
+   Light surfaces and secondary text use transparent tints of these colors.
    Fonts: Arial / Helvetica only
    ========================================================================== */
 
 :root {
-  --blue: #2563eb;
-  --blue-dark: #1e3a8a;
-  --green: #10b981;
-  --amber: #f59e0b;
-  --purple: #8b5cf6;
-  --teal: #0891b2;
+  --navy: #032b60;
+  --teal: #04839d;
+  --silver: #9a9da2;
+  --white: #ffffff;
+  --navy-strong: #022348;
+  --teal-strong: #036c82;
+  --navy-soft: rgba(3, 43, 96, 0.08);
+  --teal-soft: rgba(4, 131, 157, 0.10);
+  --silver-soft: rgba(154, 157, 162, 0.11);
 
-  --ink: #1f2937;
-  --ink-soft: #4b5563;
-  --paper: #ffffff;
-  --paper-soft: #f3f6fb;
-  --line: #e2e8f0;
+  /* Supplemental icon palette. These colors are intentionally limited to
+     icon tiles so the primary page structure remains within the SRG palette. */
+  --icon-blue: #2563eb;
+  --icon-green: #10b981;
+  --icon-amber: #f59e0b;
+  --icon-purple: #8b5cf6;
+  --icon-teal: #0891b2;
+
+  --ink: var(--navy);
+  --ink-soft: rgba(3, 43, 96, 0.76);
+  --paper: var(--white);
+  --paper-soft: var(--silver-soft);
+  --line: rgba(154, 157, 162, 0.48);
 
   --font: Arial, Helvetica, "Helvetica Neue", sans-serif;
 
@@ -82,8 +94,8 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-150%);
   padding: 10px 16px;
   border-radius: 8px;
-  background: var(--blue-dark);
-  color: #fff;
+  background: var(--navy);
+  color: var(--white);
   font-weight: 700;
 }
 
@@ -104,7 +116,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 20;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: saturate(140%) blur(6px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px solid var(--teal);
 }
 
 .nav {
@@ -127,7 +139,29 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand span {
-  color: var(--blue);
+  color: var(--teal);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.15;
+}
+
+.site-brand img {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+}
+
+.site-brand .site-brand-text {
+  color: var(--navy);
+}
+
+.site-brand .site-brand-text strong {
+  color: var(--teal);
+  font-weight: inherit;
 }
 
 .nav-toggle {
@@ -187,13 +221,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links a:hover {
-  color: var(--blue);
-  background: var(--paper-soft);
+  color: var(--teal-strong);
+  background: var(--teal-soft);
 }
 
 .nav-links a[aria-current="page"] {
-  color: #fff;
-  background: var(--blue);
+  color: var(--white);
+  background: var(--navy);
 }
 
 /* ---------------------------------- Hero ---------------------------------- */
@@ -213,8 +247,8 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--blue);
-  background: #e8eefd;
+  color: var(--teal-strong);
+  background: var(--teal-soft);
   padding: 6px 14px;
   border-radius: 999px;
   margin: 0 0 18px;
@@ -233,7 +267,7 @@ a { color: inherit; text-decoration: none; }
 .hero .subhead {
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--teal-strong);
   margin: 0 0 18px;
 }
 
@@ -252,7 +286,7 @@ a { color: inherit; text-decoration: none; }
   aspect-ratio: auto;
   object-fit: cover;
   border-radius: var(--radius);
-  box-shadow: 0 20px 45px -18px rgba(31, 41, 55, 0.35);
+  box-shadow: 0 20px 45px -18px rgba(3, 43, 96, 0.34);
 }
 
 .hero-art .photo-credit {
@@ -262,7 +296,7 @@ a { color: inherit; text-decoration: none; }
   text-align: right;
 }
 
-.hero-art .photo-credit a:hover { color: var(--blue); }
+.hero-art .photo-credit a:hover { color: var(--teal-strong); }
 
 /* ---------------------------------- Buttons ---------------------------------- */
 
@@ -283,11 +317,11 @@ a { color: inherit; text-decoration: none; }
   transition: all 0.2s ease;
 }
 
-.btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); }
-.btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.btn-primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.btn-primary:hover { background: var(--teal-strong); border-color: var(--teal-strong); }
 
-.btn-ghost { background: transparent; color: var(--blue); border-color: var(--blue); }
-.btn-ghost:hover { background: var(--blue); color: #fff; }
+.btn-ghost { background: transparent; color: var(--teal-strong); border-color: var(--teal); }
+.btn-ghost:hover { background: var(--teal-strong); color: var(--white); }
 
 .btn svg { width: 16px; height: 16px; }
 
@@ -329,11 +363,11 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 
 .icon-badge svg { width: 26px; height: 26px; }
 
-.icon-blue   { background: #e8eefd; color: var(--blue); }
-.icon-green  { background: #e3f9f1; color: var(--green); }
-.icon-amber  { background: #fef3e2; color: var(--amber); }
-.icon-purple { background: #f1ecfe; color: var(--purple); }
-.icon-teal   { background: #e3f4f8; color: var(--teal); }
+.icon-blue   { background: #e8eefd; color: var(--icon-blue); }
+.icon-green  { background: #e3f9f1; color: var(--icon-green); }
+.icon-amber  { background: #fef3e2; color: var(--icon-amber); }
+.icon-purple { background: #f1ecfe; color: var(--icon-purple); }
+.icon-teal   { background: #e3f4f8; color: var(--icon-teal); }
 
 /* ---------------------------------- Pillars (home strip) ---------------------------------- */
 
@@ -353,7 +387,7 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 
 .pillar:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px -20px rgba(31, 41, 55, 0.25);
+  box-shadow: 0 16px 32px -20px rgba(3, 43, 96, 0.24);
 }
 
 .pillar h3 {
@@ -386,7 +420,7 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 
 .service-row:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 36px -22px rgba(31, 41, 55, 0.28);
+  box-shadow: 0 18px 36px -22px rgba(3, 43, 96, 0.27);
 }
 
 .service-row .icon-badge { margin-bottom: 0; }
@@ -411,8 +445,8 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--blue);
-  background: #e8eefd;
+  color: var(--teal-strong);
+  background: var(--teal-soft);
   padding: 4px 12px;
   border-radius: 999px;
 }
@@ -420,19 +454,19 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 /* ---------------------------------- CTA band ---------------------------------- */
 
 .cta-band {
-  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal-strong) 100%);
+  color: var(--white);
 }
 
 .cta-band .section-head p { color: rgba(255,255,255,0.85); }
 .cta-copy { color: rgba(255,255,255,0.85); font-size: 1.04rem; margin: 0 0 28px; }
-.cta-band .eyebrow { background: rgba(255,255,255,0.16); color: #fff; }
-.cta-band h2 { color: #fff; }
+.cta-band .eyebrow { background: rgba(255,255,255,0.16); color: var(--white); }
+.cta-band h2 { color: var(--white); }
 
-.cta-band .btn-primary { background: #fff; color: var(--blue-dark); border-color: #fff; }
-.cta-band .btn-primary:hover { background: var(--amber); border-color: var(--amber); color: #fff; }
+.cta-band .btn-primary { background: var(--white); color: var(--navy); border-color: var(--white); }
+.cta-band .btn-primary:hover { background: var(--silver); border-color: var(--silver); color: var(--navy); }
 
-.cta-band .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.6); }
+.cta-band .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.6); }
 .cta-band .btn-ghost:hover { background: rgba(255,255,255,0.16); }
 
 .cta-grid {
@@ -472,13 +506,13 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--teal-strong);
   margin-bottom: 6px;
 }
 
 .contact-card dd { margin: 0; font-size: 1.08rem; font-weight: 700; overflow-wrap: anywhere; }
 
-.contact-card dd a:hover { color: var(--blue); }
+.contact-card dd a:hover { color: var(--teal-strong); }
 
 form.contact-form { display: grid; gap: 20px; }
 
@@ -500,7 +534,7 @@ form.contact-form { display: grid; gap: 20px; }
 .field-help { color: var(--ink-soft); }
 
 .field-error {
-  color: var(--amber);
+  color: var(--navy);
   font-weight: 700;
 }
 
@@ -521,13 +555,13 @@ form.contact-form { display: grid; gap: 20px; }
 .field textarea:focus,
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--teal);
   outline-offset: 2px;
 }
 
 .field input[aria-invalid="true"] {
-  border-color: var(--amber);
-  box-shadow: 0 0 0 1px var(--amber);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 1px var(--navy);
 }
 
 .field textarea { resize: vertical; min-height: 130px; }
@@ -553,7 +587,7 @@ button:focus-visible {
 .form-status {
   margin: 0;
   padding: 12px 14px;
-  border-left: 4px solid var(--blue);
+  border-left: 4px solid var(--silver);
   border-radius: 8px;
   background: var(--paper-soft);
   color: var(--ink);
@@ -561,8 +595,8 @@ button:focus-visible {
   font-weight: 700;
 }
 
-.form-status.is-success { border-left-color: var(--green); }
-.form-status.is-error { border-left-color: var(--amber); }
+.form-status.is-success { border-left-color: var(--teal); }
+.form-status.is-error { border-left-color: var(--navy); }
 
 .contact-form .btn:disabled {
   cursor: not-allowed;
@@ -572,7 +606,7 @@ button:focus-visible {
 /* ---------------------------------- Footer ---------------------------------- */
 
 .site-footer {
-  background: var(--blue-dark);
+  background: var(--navy);
   color: rgba(255,255,255,0.85);
   padding: 40px 0;
 }
@@ -586,7 +620,7 @@ button:focus-visible {
 }
 
 .site-footer .brand { color: #fff; }
-.site-footer .brand span { color: #93c5fd; }
+.site-footer .brand span { color: var(--silver); }
 
 .footer-meta {
   font-size: 0.85rem;
@@ -645,6 +679,17 @@ button:focus-visible {
     font-size: 1.08rem;
     white-space: normal;
     line-height: 1.2;
+  }
+
+  .site-brand {
+    gap: 8px;
+    line-height: 1.15;
+  }
+
+  .site-brand img {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
   .nav-toggle { display: inline-flex; }
