@@ -2,6 +2,17 @@
 
 Static website for Silverware Resource Group LLC.
 
+## Delivery Health Check integration — September 2026
+
+- Added the complete Delivery Health Check service page at
+  `/services/delivery-health-check/`.
+- Added featured links from the Home and Services pages.
+- Added `/documents/` for customer-facing PDFs. The current overview links use
+  the placeholder filename `delivery-health-check-overview.pdf`; add the final
+  PDF under that name or update the page references when its filename is
+  finalized.
+- Added the new page to `sitemap.xml`.
+
 ## Corrected package — August 1, 2026
 
 - Restored the original multicolor icon treatments on the Home and Services pages.
