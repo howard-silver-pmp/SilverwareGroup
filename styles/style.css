@@ -552,35 +552,33 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 /* ----------------------- Delivery Health Check page ----------------------- */
 
 .service-detail-hero { padding-bottom: clamp(48px, 7vw, 76px); }
-.service-detail-hero .hero-grid { align-items: stretch; }
+.service-detail-hero .hero-grid { align-items: center; }
 .service-detail-hero .lede + .lede { margin-top: -18px; }
 
-.service-detail-visual {
-  min-height: 100%;
-  padding: clamp(30px, 5vw, 48px);
+.service-detail-image {
+  position: relative;
+  min-width: 0;
+  margin: 0;
   border-radius: var(--radius);
-  color: var(--white);
-  background: linear-gradient(145deg, var(--navy) 0%, var(--teal-strong) 100%);
+  overflow: hidden;
+  background: var(--navy);
   box-shadow: 0 20px 45px -18px rgba(3, 43, 96, 0.34);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.service-detail-visual img {
-  width: 72px;
-  height: 72px;
-  margin-bottom: clamp(48px, 8vw, 90px);
-  filter: brightness(0) invert(1);
+.service-detail-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(145deg, rgba(3, 43, 96, 0.10), rgba(4, 131, 157, 0.04));
 }
 
-.service-detail-visual p { margin: 0; color: rgba(255,255,255,0.88); }
-.service-detail-visual .visual-title {
-  margin-bottom: 10px;
-  color: var(--white);
-  font-size: clamp(1.45rem, 2.5vw, 2rem);
-  font-weight: 700;
-  line-height: 1.25;
+.service-detail-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content-section { background: var(--white); }
@@ -884,7 +882,11 @@ button:focus-visible {
   .featured-service-grid,
   .two-column-content { grid-template-columns: 1fr; }
 
-  .service-detail-visual { min-height: 340px; }
+  .service-detail-image { order: -1; }
+  .service-detail-image img {
+    aspect-ratio: 16 / 9;
+    max-height: 380px;
+  }
 
   .download-panel { grid-template-columns: 1fr; }
 
@@ -1011,6 +1013,11 @@ button:focus-visible {
   .brand { font-size: 1rem; }
 
   .hero-art img { max-height: 300px; }
+
+  .service-detail-image img {
+    aspect-ratio: 4 / 3;
+    max-height: 300px;
+  }
 
   .eyebrow {
     font-size: 0.74rem;

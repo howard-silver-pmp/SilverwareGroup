@@ -2,6 +2,16 @@
 
 Static website for Silverware Resource Group LLC.
 
+## Delivery Health Check hero image — September 2026
+
+- Replaced the text-heavy colored panel with a responsive dashboard image.
+- Desktop uses a balanced 4:3 crop; tablet and mobile use shorter crops and move
+  the image above the headline to preserve readability and avoid horizontal
+  overflow.
+- Photo: Luke Chesser on Unsplash, “Graphs of performance analytics on a laptop
+  screen,” free to use under the Unsplash License:
+  `https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00`
+
 ## Delivery Health Check integration — September 2026
 
 - Added the complete Delivery Health Check service page at
