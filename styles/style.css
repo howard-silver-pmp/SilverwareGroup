@@ -24,6 +24,7 @@
   --icon-amber: #f59e0b;
   --icon-purple: #8b5cf6;
   --icon-teal: #0891b2;
+  --negative: #b42318;
 
   --ink: var(--navy);
   --ink-soft: rgba(3, 43, 96, 0.76);
@@ -604,20 +605,48 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 }
 
 .two-column-content > div > p { color: var(--ink-soft); }
-.signal-list { display: grid; gap: 14px; }
 
-.signal-list li {
-  padding: 16px 18px 16px 50px;
+.why-matters-grid {
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-areas:
+    "eyebrow ."
+    "copy signals";
+  row-gap: 10px;
+}
+
+.why-matters-eyebrow { grid-area: eyebrow; justify-self: start; }
+.why-matters-copy { grid-area: copy; min-width: 0; }
+.signal-panel {
+  grid-area: signals;
+  min-width: 0;
+  padding: clamp(24px, 3vw, 32px);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-top: 5px solid var(--teal);
+  border-radius: var(--radius);
   background: var(--white);
 }
+
+.signal-panel h2 {
+  margin-bottom: 16px;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
+.signal-list { display: grid; gap: 0; }
+
+.signal-list li {
+  padding: 12px 0 12px 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.signal-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.signal-list li:first-child { padding-top: 0; }
+.signal-list li:first-child::before { top: 0.48em; }
 
 .signal-list li::before {
   content: "";
   position: absolute;
-  left: 20px;
-  top: 22px;
+  left: 2px;
+  top: 1.13em;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -625,7 +654,29 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
   box-shadow: 0 0 0 5px var(--teal-soft);
 }
 
-.scope-grid,
+.expect-grid {
+  grid-template-areas:
+    "eyebrow ."
+    "title copy";
+  row-gap: 10px;
+}
+
+.expect-eyebrow { grid-area: eyebrow; justify-self: start; }
+.expect-title { grid-area: title; min-width: 0; }
+.expect-copy { grid-area: copy; min-width: 0; }
+.expect-copy p:first-child { margin-top: 0; }
+
+.content-section .section-head h2,
+.comparison-section .section-head h2,
+.download-panel .eyebrow + h2,
+.cta-band .section-head h2 { margin-top: 10px; }
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -634,10 +685,17 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 
 .scope-card,
 .comparison-card {
-  padding: 28px;
+  padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scope-card:hover,
+.comparison-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -20px rgba(3, 43, 96, 0.26);
 }
 
 .scope-card h3,
@@ -648,12 +706,13 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
   line-height: 1.3;
 }
 
-.scope-card p { margin: 0; color: var(--ink-soft); }
+.scope-card h3 { font-size: 1.02rem; }
+.scope-card p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.55; }
 .scope-card .scope-number {
   display: block;
   margin-bottom: 8px;
   color: var(--teal-strong);
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -666,8 +725,8 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
   height: 14px;
   border: 0;
   background:
-    linear-gradient(45deg, transparent 43%, var(--silver) 43%, var(--silver) 57%, transparent 57%),
-    linear-gradient(-45deg, transparent 43%, var(--silver) 43%, var(--silver) 57%, transparent 57%);
+    linear-gradient(45deg, transparent 43%, var(--negative) 43%, var(--negative) 57%, transparent 57%),
+    linear-gradient(-45deg, transparent 43%, var(--negative) 43%, var(--negative) 57%, transparent 57%);
   transform: none;
 }
 
@@ -874,6 +933,7 @@ button:focus-visible {
 @media (max-width: 1000px) {
   .pillars { gap: 22px; }
   .pillar { padding: 24px 20px; }
+  .scope-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -897,6 +957,24 @@ button:focus-visible {
 
   .featured-service-grid,
   .two-column-content { grid-template-columns: 1fr; }
+
+  .why-matters-grid {
+    grid-template-areas:
+      "eyebrow"
+      "copy"
+      "signals";
+  }
+
+  .signal-panel { margin-top: 24px; }
+
+  .expect-grid {
+    grid-template-areas:
+      "eyebrow"
+      "title"
+      "copy";
+  }
+
+  .expect-copy { margin-top: 14px; }
 
   .service-detail-hero .hero-grid {
     grid-template-areas:
@@ -1065,7 +1143,9 @@ button:focus-visible {
 
 @media (hover: none) {
   .pillar:hover,
-  .service-row:hover {
+  .service-row:hover,
+  .scope-card:hover,
+  .comparison-card:hover {
     transform: none;
     box-shadow: none;
   }

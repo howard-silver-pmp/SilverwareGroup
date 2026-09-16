@@ -2,6 +2,16 @@
 
 Static website for Silverware Resource Group LLC.
 
+## Delivery Health Check section alignment — September 2026
+
+- Reworked “Why this matters” into balanced columns with one compact signal
+  panel aligned below the section label.
+- Standardized spacing between section labels and headings throughout the page.
+- Changed the included-scope cards to a compact four-card desktop row with
+  responsive two- and one-column layouts.
+- Added restrained hover movement to scope and boundary cards and changed the
+  “This is not” indicators to red.
+
 ## Delivery Health Check layout refinement — September 2026
 
 - Aligned the hero image with the top of the main headline on desktop.
