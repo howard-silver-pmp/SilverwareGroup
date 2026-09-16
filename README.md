@@ -2,6 +2,14 @@
 
 Static website for Silverware Resource Group LLC.
 
+## Delivery Health Check layout refinement — September 2026
+
+- Aligned the hero image with the top of the main headline on desktop.
+- Expanded the supporting copy to use the full text column and kept both hero
+  actions on one desktop row while retaining stacked mobile buttons.
+- Standardized contact-page links and scheduling calls to action across the website as
+  “Schedule a Conversation” and removed “fit conversation” wording.
+
 ## Delivery Health Check hero image — September 2026
 
 - Replaced the text-heavy colored panel with a responsive dashboard image.

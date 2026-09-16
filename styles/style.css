@@ -552,10 +552,22 @@ section { padding: clamp(48px, 7vw, 84px) 0; }
 /* ----------------------- Delivery Health Check page ----------------------- */
 
 .service-detail-hero { padding-bottom: clamp(48px, 7vw, 76px); }
-.service-detail-hero .hero-grid { align-items: center; }
+.service-detail-hero .hero-grid {
+  grid-template-areas:
+    "eyebrow ."
+    "copy image";
+  row-gap: 0;
+  align-items: start;
+}
+.service-detail-eyebrow { grid-area: eyebrow; justify-self: start; }
+.service-detail-copy { grid-area: copy; min-width: 0; }
 .service-detail-hero .lede + .lede { margin-top: -18px; }
+.service-detail-hero p.lede { max-width: none; }
+.service-detail-hero .btn-row { flex-wrap: nowrap; }
+.service-detail-hero .btn { padding-inline: 22px; white-space: nowrap; }
 
 .service-detail-image {
+  grid-area: image;
   position: relative;
   min-width: 0;
   margin: 0;
@@ -855,6 +867,10 @@ button:focus-visible {
 
 /* ---------------------------------- Responsive ---------------------------------- */
 
+@media (min-width: 901px) and (max-width: 1100px) {
+  .service-detail-hero .btn-row { flex-wrap: wrap; }
+}
+
 @media (max-width: 1000px) {
   .pillars { gap: 22px; }
   .pillar { padding: 24px 20px; }
@@ -882,7 +898,14 @@ button:focus-visible {
   .featured-service-grid,
   .two-column-content { grid-template-columns: 1fr; }
 
-  .service-detail-image { order: -1; }
+  .service-detail-hero .hero-grid {
+    grid-template-areas:
+      "image"
+      "eyebrow"
+      "copy";
+  }
+
+  .service-detail-image { margin-bottom: 32px; }
   .service-detail-image img {
     aspect-ratio: 16 / 9;
     max-height: 380px;
@@ -971,6 +994,8 @@ button:focus-visible {
 
 @media (max-width: 620px) {
   .pillars { grid-template-columns: 1fr; }
+
+  .service-detail-hero .btn-row { flex-wrap: wrap; }
 
   .btn-row {
     align-items: stretch;
